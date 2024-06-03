@@ -13,10 +13,22 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('rol'); //es necesario para estudiante/egresado, UDI y docente
+            $table->string('nombre'); //es necesario para estudiante/egresado, UDI y docente
+            $table->string('apellidos'); //es necesario para estudiante/egresado, UDI y docente
+            $table->string('email')->unique(); //es necesario para estudiante/egresado, UDI y docente
+            $table->string('password'); //es necesario para estudiante/egresado, UDI y docente
+            $table->integer('celular'); //es necesario para estudiante/egresado, UDI y docente
+            $table->integer('codigo'); //es necesario para estudiante/egresado, UDI y docente
+            $table->timestamp('fecha_egreso')->nullable(); //es necesario para estudiante/egresado
+            $table->string('carrera')->nullable(); //es necesario para estudiante/egresado y docente
+            $table->string('linea')->nullable(); //es necesario para docente
+            $table->string('sub_lineas')->nullable(); //es necesario para docente
+            $table->boolean('es_revisor')->default(false); //es necesario para docente
+            $table->boolean('es_asesor')->default(false); //es necesario para docente
+            $table->boolean('es_jurado')->default(false); //es necesario para docente
+            $table->string('estado')->default('habilitado');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
