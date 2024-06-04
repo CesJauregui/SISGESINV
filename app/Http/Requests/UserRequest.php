@@ -42,6 +42,7 @@ class UserRequest extends FormRequest
             'es_revisor' => ['sometimes', 'boolean'],
             'es_asesor' => ['sometimes', 'boolean'],
             'es_jurado' => ['sometimes', 'boolean'],
+            'estado' => ['sometimes', 'string']
         ];
     }
 }

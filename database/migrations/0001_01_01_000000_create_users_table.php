@@ -27,7 +27,7 @@ return new class extends Migration
             $table->boolean('es_revisor')->default(false); //es necesario para docente
             $table->boolean('es_asesor')->default(false); //es necesario para docente
             $table->boolean('es_jurado')->default(false); //es necesario para docente
-            $table->string('estado')->default('habilitado');
+            $table->string('estado')->default('Habilitado');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
