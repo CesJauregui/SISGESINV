@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use App\Mail\EnviarInvitacion;
+use App\Mail\SendInvitation;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -26,11 +25,12 @@ class UserController extends Controller
      */
     public function store(UserRequest $request): JsonResponse
     {
-
         $password = Str::random(16, false);
-        $usuarioCreado = User::create($request->validated() + ['password' => $password]);
+        $user = User::create($request->validated() + ['password' => $password]);
 
-        Mail::to($usuarioCreado->email)->send(new EnviarInvitacion($usuarioCreado->nombre, $password));
+        if (in_array($request->role, array(User::UDI, User::DOCENTE))) {
+            Mail::to($user->email)->send(new SendInvitation($user->name, $password));
+        }
 
         return response()->json([
             'status' => true,

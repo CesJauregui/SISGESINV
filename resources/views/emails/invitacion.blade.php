@@ -41,7 +41,7 @@
                     <!-- Body -->
                     <tr>
                         <td class="body" style="padding: 40px; text-align: left; font-size: 16px; line-height: 1.6;">
-                            Hola, {{ $nombre }}<br>
+                            Hola, {{ $name }}<br>
                             Has sido invitado al Sistema de Gestión de Investigación de la Facultad de Ciencias de Ingeniería.
                             <br><br>
                             Se te asignó la siguiente contraseña para iniciar sesión: <b>{{ $password }}</b>

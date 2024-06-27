@@ -3,24 +3,23 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class EnviarInvitacion extends Mailable
+class SendInvitation extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public $nombre, $password;
-    public function __construct($nombre, $password)
+    public $name, $password;
+    public function __construct($name, $password)
     {
-        $this->nombre = $nombre;
+        $this->name = $name;
         $this->password = $password;
     }
 
@@ -41,7 +40,7 @@ class EnviarInvitacion extends Mailable
     public function content(): Content
     {
         return new Content(
-            with: [$this->nombre, $this->password],
+            with: [$this->name, $this->password],
             view: 'emails.invitacion',
         );
     }
