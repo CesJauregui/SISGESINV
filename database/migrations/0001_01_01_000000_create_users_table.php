@@ -13,21 +13,24 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('rol'); //es necesario para estudiante/egresado, UDI y docente
-            $table->string('nombre'); //es necesario para estudiante/egresado, UDI y docente
-            $table->string('apellidos'); //es necesario para estudiante/egresado, UDI y docente
+            $table->string('role'); //es necesario para estudiante/egresado, UDI y docente
+            $table->string('name'); //es necesario para estudiante/egresado, UDI y docente
+            $table->string('surnames'); //es necesario para estudiante/egresado, UDI y docente
             $table->string('email')->unique(); //es necesario para estudiante/egresado, UDI y docente
             $table->string('password'); //es necesario para estudiante/egresado, UDI y docente
-            $table->integer('celular'); //es necesario para estudiante/egresado, UDI y docente
-            $table->integer('codigo'); //es necesario para estudiante/egresado, UDI y docente
-            $table->timestamp('fecha_egreso')->nullable(); //es necesario para estudiante/egresado
-            $table->string('carrera')->nullable(); //es necesario para estudiante/egresado y docente
-            $table->string('linea')->nullable(); //es necesario para docente
-            $table->string('sub_lineas')->nullable(); //es necesario para docente
-            $table->boolean('es_revisor')->default(false); //es necesario para docente
-            $table->boolean('es_asesor')->default(false); //es necesario para docente
-            $table->boolean('es_jurado')->default(false); //es necesario para docente
-            $table->string('estado')->default('Habilitado');
+            $table->integer('phone'); //es necesario para estudiante/egresado, UDI y docente
+            $table->integer('code'); //es necesario para estudiante/egresado, UDI y docente
+            $table->date('discharge_date')->nullable(); //es necesario para estudiante/egresado
+            $table->string('cycle')->nullable(); //es necesario para estudiante
+            $table->string('career')->nullable(); //es necesario para estudiante/egresado y docente
+            $table->string('line')->nullable(); //es necesario para docente
+            $table->string('sublines')->nullable(); //es necesario para docente
+            $table->boolean('is_reviewer')->default(false); //es necesario para docente
+            $table->boolean('is_advisor')->default(false); //es necesario para docente
+            $table->boolean('is_jury')->default(false); //es necesario para docente
+            $table->string('orcid')->nullable();
+            $table->integer('cip')->nullable();
+            $table->string('status')->default('Habilitado');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

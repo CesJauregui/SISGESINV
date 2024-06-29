@@ -28,21 +28,23 @@ class UserRequest extends FormRequest
             $sometimes = 'sometimes';
         }
         return [
-            'rol' => [$sometimes, 'string'],
-            'nombre' => [$sometimes, 'string'],
-            'apellidos' => [$sometimes, 'string'],
+            'role' => [$sometimes, 'string'],
+            'name' => [$sometimes, 'string'],
+            'surnames' => [$sometimes, 'string'],
             'email' => [$sometimes, 'string'],
             'password' => ['sometimes', 'string'],
-            'celular' => [$sometimes, 'integer'],
-            'codigo' => [$sometimes, 'integer'],
-            'fecha_egreso' => ['nullable'],
-            'carrera' => ['nullable', 'string'],
-            'linea' => ['nullable', 'string'],
-            'sub_lineas' => ['nullable', 'string'],
-            'es_revisor' => ['sometimes', 'boolean'],
-            'es_asesor' => ['sometimes', 'boolean'],
-            'es_jurado' => ['sometimes', 'boolean'],
-            'estado' => ['sometimes', 'string']
+            'phone' => [$sometimes, 'integer'],
+            'code' => [$sometimes, 'integer'],
+            'discharge_date' => ['nullable', 'date'],
+            'cycle' => ['nullable', 'string'],
+            'career' => ['nullable', 'string'],
+            'line' => ['nullable', 'string'],
+            'sublines' => ['nullable', 'string'],
+            'is_reviewer' => ['sometimes', 'boolean'],
+            'is_advisor' => ['sometimes', 'boolean'],
+            'is_jury' => ['sometimes', 'boolean'],
+            'orcid' => ['sometimes', 'string'],
+            'cip' => ['sometimes', 'integer']
         ];
     }
 }

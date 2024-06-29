@@ -50,7 +50,7 @@ class UserController extends Controller
             ], Response::HTTP_NOT_FOUND);
         }
 
-        return response()->json(['status' => true, 'user' => $user->load('user')], Response::HTTP_OK);
+        return response()->json(['status' => true, 'user' => $user], Response::HTTP_OK);
     }
 
     /**

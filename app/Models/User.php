@@ -12,27 +12,36 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const UDI = 'UDI';
+    const DOCENTE = 'Docente';
+    const EGRESADO = 'Egresado';
+    const ESTUDIANTE = 'Estudiante';
+    const SEMILLERO = 'Semillero';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'rol',
-        'nombre',
-        'apellidos',
+        'role',
+        'name',
+        'surnames',
         'email',
         'password',
-        'celular',
-        'codigo',
-        'fecha_egreso',
-        'carrera',
-        'linea',
-        'sub_linea',
-        'es_revisor',
-        'es_asesor',
-        'es_jurado',
-        'estado'
+        'phone',
+        'code',
+        'discharge_date',
+        'cycle',
+        'career',
+        'line',
+        'sublines',
+        'is_reviewer',
+        'is_advisor',
+        'is_jury',
+        'orcid',
+        'cip',
+        'status'
     ];
 
     /**
@@ -56,5 +65,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function degree_processes()
+    {
+        return $this->belongsToMany(DegreeProcess::class, 'degree_user', 'user_id');
+    }
+
+    public function inscriptions()
+    {
+        return $this->belongsToMany(Inscription::class, 'inscription_user');
     }
 }
